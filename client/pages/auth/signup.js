@@ -12,7 +12,11 @@ export default () => {
         url: "/api/users/signup",
         method: "post",
         body: {
-            email, password
+            email,
+            password
+        },
+        onSuccess: () => {
+            router.push("/")
         }
     });
 
@@ -20,8 +24,6 @@ export default () => {
         e.preventDefault();
 
         await doRequest();
-
-        router.push("/");
     }
 
     return (
