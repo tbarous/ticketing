@@ -30,6 +30,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     }
+}, {
+    toJSON: {
+        transform(doc, ret) {
+            delete ret.password;
+        }
+    }
 });
 
 userSchema.pre("save", async function (done) {
