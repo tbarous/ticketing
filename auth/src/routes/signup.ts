@@ -46,6 +46,6 @@ router.post(
 
         res.status(201).send(user);
     }
-)
+);
 
 export {router as signupRouter};
