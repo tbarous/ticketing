@@ -13,10 +13,11 @@ router.get("/api/users/currentuser", (req: Request, res: Response) => {
             req.session.jwt,
             process.env.JWT_KEY!
         );
-    } catch (err) {
-        res.send()
-    }
 
+        res.send({currentUser: payload});
+    } catch (err) {
+        res.send({currentUser: null});
+    }
 })
 
 export {router as currentUserRouter};
