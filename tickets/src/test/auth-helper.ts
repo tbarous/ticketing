@@ -2,7 +2,7 @@ import request from "supertest";
 import {app} from "../app";
 import jwt from "jsonwebtoken";
 
-export const signup = async () => {
+export const getCookie = () => {
     // Build a JWT payload. {id, email}
     const payload = {
         id: "dqwdwq",
@@ -21,6 +21,6 @@ export const signup = async () => {
     // Take JSON and encode it as base64
     const base64 = Buffer.from(sessionJSON).toString("base64");
 
-    // Return a string that is the cookie with the encoded data
-    return `session: ${base64}`;
+    // Return an array including the cookie with the encoded data
+    return [`session=${base64}`];
 }
