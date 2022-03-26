@@ -9,7 +9,7 @@ export default () => {
     const router = useRouter();
 
     const {doRequest, errors} = useRequest({
-        url: "/api/users/signup",
+        url: "/api/users/signin",
         method: "post",
         body: {
             email,
@@ -28,11 +28,11 @@ export default () => {
 
     return (
         <form onSubmit={onSubmit}>
-            <h1>Sign up</h1>
+            <h1>Sign in</h1>
 
             <div className="form-group">
                 <label htmlFor="email">Email Address</label>
-                
+
                 <input
                     value={email}
                     onChange={e => setEmail(e.target.value)}
@@ -54,7 +54,7 @@ export default () => {
 
             {errors}
 
-            <button className="btn btn-primary">Sign Up</button>
+            <button className="btn btn-primary">Sign in</button>
         </form>
     )
 }
