@@ -12,6 +12,8 @@ const start = async () => {
     }
 
     try {
+        await natsWrapper.connect("ticketing", "qdwq", "http://nats-srv:4222")
+
         await mongoose.connect(process.env.MONGO_URI);
 
         console.log("Connected to mongodb");
