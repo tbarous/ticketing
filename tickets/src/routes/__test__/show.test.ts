@@ -3,10 +3,12 @@ import {app} from "../../app";
 import {getCookie} from "../../test/auth-helper";
 
 it("Returns a 404 if ticket is not found", async () => {
-    await request(app)
-        .get("/api/tickets/$$$$$$$")
+    const response = await request(app)
+        .get("/api/tickets/dwqdqwdddddddddddddddddwqd")
         .send()
         .expect(404);
+
+    console.log(response);
 });
 
 it("Returns the ticket if it is found", async () => {
