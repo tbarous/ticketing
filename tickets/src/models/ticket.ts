@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
-import {Password} from "../services/password";
 
 // An interface that describes the properties
 // that are required to create a new Ticket
 interface TicketAttrs {
-    email: string;
-    password: string;
+    title: string,
+    price: number,
+    userId: string
 }
 
 // An interface that describes the properties
@@ -17,16 +17,21 @@ interface TicketModel extends mongoose.Model<TicketDoc> {
 // An interface that describes the properties
 // that a Ticket Document has
 interface TicketDoc extends mongoose.Document {
-    email: string;
-    password: string;
+    title: string,
+    price: number,
+    userId: string
 }
 
 const ticketSchema = new mongoose.Schema({
-    email: {
+    title: {
         type: String,
         required: true
     },
-    password: {
+    price: {
+        type: Number,
+        required: true
+    },
+    userId: {
         type: String,
         required: true
     }
