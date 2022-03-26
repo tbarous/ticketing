@@ -4,7 +4,7 @@ import {getCookie} from "../../test/auth-helper";
 
 it("Returns a 404 if ticket is not found", async () => {
     await request(app)
-        .get("/api/tickets/qddwqd")
+        .get("/api/tickets/$$$$$$$")
         .send()
         .expect(404);
 });

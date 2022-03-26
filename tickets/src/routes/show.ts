@@ -1,5 +1,5 @@
 import express, {Request, Response} from "express";
-import {currentUser, requireAuth, validateRequest} from "@tbarous/common";
+import {NotFoundError, validateRequest} from "@tbarous/common";
 import {body} from "express-validator";
 import {Ticket} from "../models/ticket";
 
@@ -15,14 +15,14 @@ router.post(
     ],
     validateRequest,
     async (req: Request, res: Response) => {
-        const {title, price} = req.body;
+        const ticket = await Ticket.findById(req.params.id);
 
-        const ticket = Ticket.build({title, price, userId: req.currentUser!.id});
+        if (!ticket) {
+            throw new NotFoundError();
+        }
 
-        await ticket.save();
-
-        res.status(201).send(ticket);
+        res.send(ticket);
     }
 );
 
-export {router as createTicketRouter};
+export {router as showTicketRouter};

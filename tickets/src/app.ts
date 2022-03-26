@@ -4,6 +4,7 @@ import {json} from "body-parser";
 import cookieSession from "cookie-session";
 import {errorHandler, NotFoundError, currentUser} from "@tbarous/common";
 import {createTicketRouter} from "./routes/create";
+import {showTicketRouter} from "./routes/show";
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(
 
 app.use(currentUser);
 
+app.use(showTicketRouter);
 app.use(createTicketRouter);
 
 app.all("*", async (req, res) => {

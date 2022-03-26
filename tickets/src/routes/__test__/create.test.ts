@@ -80,8 +80,6 @@ it("It creates a ticket with valid inputs", async () => {
             price: 20
         })
 
-    console.log(res)
-
     tickets = await Ticket.find({});
 
     expect(tickets.length).toEqual(1);
