@@ -510,10 +510,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@tbarous/common@^1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@tbarous/common/-/common-1.0.10.tgz#50a3f32e84c777084618e748bad323b45fe96ac9"
-  integrity sha512-XwvldgGvgPsoiJ0zWVBIGkBUH4iGR+EAKymxAfYMJ1OK+WFvKQWoyrNLt5rAVetF71vPbUE9fdSWzT3M8BJ/LQ==
+"@tbarous/common@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@tbarous/common/-/common-1.0.11.tgz#107238a4186cfd9cf41bf71c9123b07e00980816"
+  integrity sha512-s7qI19Yb1EsLgog8DskjgwjamZg9HANHEMX9IE01RiDd3LBMMGlbH/he+X9kLmE6xzYty4Ejjv0nWkLCBzApOg==
   dependencies:
     cookie-session "^2.0.0"
     express "^4.17.3"
