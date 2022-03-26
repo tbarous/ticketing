@@ -14,7 +14,8 @@ const stan = nats.connect(
 stan.on("connect", () => {
     console.log("Listener connected to NATS");
 
-    const options = stan.subscriptionOptions();
+    const options = stan.subscriptionOptions()
+                        .setManualAckMode(true)
 
     const subscription = stan.subscribe(
         "ticket:created",
