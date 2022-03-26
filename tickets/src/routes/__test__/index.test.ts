@@ -19,7 +19,7 @@ it("Can fetch a list of tickets", async () => {
     await createTicket();
     await createTicket();
 
-    await request(app)
+    const response = await request(app)
         .get("/api/tickets")
         .send()
         .expect(200);
