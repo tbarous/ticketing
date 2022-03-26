@@ -5,7 +5,7 @@ import {Subjects} from "./subjects";
 
 export class TicketCreatedListener extends Listener<TicketCreatedEvent> {
     queueGroupName = "payments-service";
-    subject: Subjects.TicketCreated = Subjects.TicketCreated;
+    readonly subject: Subjects.TicketCreated = Subjects.TicketCreated;
 
     onMessage(data: TicketCreatedEvent["data"], message: Message): void {
         console.log("Event data!", data);
