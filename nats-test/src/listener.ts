@@ -1,10 +1,11 @@
 import nats, {Message} from "node-nats-streaming";
+import {randomBytes} from "crypto";
 
 console.clear();
 
 const stan = nats.connect(
     "ticketing",
-    "123",
+    randomBytes(4).toString("hex"),
     {
         url: "http://localhost:4222"
     }
@@ -13,7 +14,13 @@ const stan = nats.connect(
 stan.on("connect", () => {
     console.log("Listener connected to NATS");
 
-    const subscription = stan.subscribe("ticket:created");
+    const options = stan.subscriptionOptions();
+
+    const subscription = stan.subscribe(
+        "ticket:created",
+        "orders-service-queue-group",
+        options
+    );
 
     subscription.on("message", (msg: Message) => {
         const data = msg.getData();
