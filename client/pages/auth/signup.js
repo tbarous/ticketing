@@ -32,7 +32,7 @@ export default () => {
 
             <div className="form-group">
                 <label htmlFor="email">Email Address</label>
-                
+
                 <input
                     value={email}
                     onChange={e => setEmail(e.target.value)}
