@@ -21,10 +21,10 @@ app.use(
 
 app.use(currentUser);
 
-app.use(showTicketRouter);
 app.use(createTicketRouter);
+app.use(showTicketRouter);
 
-app.all("*", async (req, res) => {
+app.all("*", async (req: express.Request, res: express.Response) => {
     throw new NotFoundError();
 });
 

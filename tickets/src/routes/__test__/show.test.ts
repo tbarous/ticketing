@@ -1,14 +1,13 @@
 import request from "supertest";
 import {app} from "../../app";
 import {getCookie} from "../../test/auth-helper";
+import mongoose from "mongoose";
 
 it("Returns a 404 if ticket is not found", async () => {
-    const response = await request(app)
-        .get("/api/tickets/dqwdqweofwefiengfiwengwpeojfeqw")
+    await request(app)
+        .get(`/api/tickets/${new mongoose.Types.ObjectId().toHexString()}`)
         .send()
         .expect(404);
-
-    console.log(response);
 });
 
 it("Returns the ticket if it is found", async () => {
