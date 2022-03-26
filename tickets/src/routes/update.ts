@@ -34,7 +34,7 @@ router.put(
             price: req.body.price
         });
 
-        ticket.save();
+        await ticket.save();
 
         res.send(ticket);
     }
