@@ -72,14 +72,15 @@ it("It creates a ticket with valid inputs", async () => {
 
     const title = "Example title";
 
-    await request(app)
+    const res = await request(app)
         .post("/api/tickets")
         .set("Cookie", getCookie())
         .send({
             title,
             price: 20
         })
-        .expect(201);
+
+    console.log(res)
 
     tickets = await Ticket.find({});
 
