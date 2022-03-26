@@ -1,6 +1,7 @@
 import express, {Request, Response} from "express";
-import {requireAuth, validateRequest} from "@tbarous/common";
+import {currentUser, requireAuth, validateRequest} from "@tbarous/common";
 import {body} from "express-validator";
+import {Ticket} from "../models/ticket";
 
 const router = express.Router();
 
@@ -18,7 +19,9 @@ router.post(
     ],
     validateRequest,
     (req: Request, res: Response) => {
-        res.sendStatus(200);
+        const {title, price} = req.body;
+
+        const ticket = Ticket.build({title, price, userId: req.currentUser!.id});
     }
 );
 

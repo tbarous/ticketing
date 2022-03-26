@@ -70,11 +70,22 @@ it("It creates a ticket with valid inputs", async () => {
 
     expect(tickets.length).toEqual(0);
 
+    const title = "Example title";
+
     await request(app)
         .post("/api/tickets")
+        .set("Cookie", getCookie())
         .send({
-            title: "Title 1",
+            title,
             price: 20
         })
         .expect(201);
+
+    tickets = await Ticket.find({});
+
+    expect(tickets.length).toEqual(1);
+
+    expect(tickets[0].price).toEqual(20);
+
+    expect(tickets[0].title).toEqual(title);
 });
