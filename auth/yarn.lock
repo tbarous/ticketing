@@ -510,6 +510,11 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@tbarous/common@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@tbarous/common/-/common-1.0.9.tgz#4b9ab9af5ed0fab666e878e89557702dc7f9c8e1"
+  integrity sha512-7M7OdlnSr/G6wYKNfhnwTolPChf63WA1yTMZUkvG57BUqiOuODKx3MlGxghh9oZiVoEF36iP8vVSvTiII2zeFg==
+
 "@tootallnate/once@1":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
