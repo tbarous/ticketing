@@ -57,3 +57,5 @@ it("Reserves a ticket", async () => {
         })
         .expect(201);
 });
+
+it.todo("Emits a created event")
