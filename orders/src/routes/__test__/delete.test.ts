@@ -2,6 +2,7 @@ import {Ticket} from "../../models/ticket";
 import {getCookie} from "../../test/auth-helper";
 import request from "supertest";
 import {app} from "../../app";
+import {Order, OrderStatus} from "../../models/order";
 
 const buildTicket = async () => {
     const ticket = Ticket.build({
@@ -30,4 +31,8 @@ it("Marks an order as cancelled", async () => {
         .set("Cookie", user)
         .send()
         .expect(204);
+
+    const updatedOrder = await Order.findById(order.id);
+
+    expect(updatedOrder!.status).toEqual(OrderStatus.Cancelled);
 })
