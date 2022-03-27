@@ -25,9 +25,9 @@ const start = async () => {
 
     try {
         await natsWrapper.connect(
-            "ticketing",
-            "qdwq",
-            "http://nats-srv:4222"
+            process.env.NATS_CLUSTER_ID,
+            process.env.NATS_CLIENT_ID,
+            process.env.NATS_URL,
         );
 
         natsWrapper.client.on("close", () => {
