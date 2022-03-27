@@ -3,6 +3,8 @@ import {app} from "../../app";
 import mongoose from "mongoose";
 import {getCookie} from "../../test/auth-helper";
 
+jest.mock("../../nats-wrapper");
+
 it("Returns 404 if the provided id does not exist", async () => {
     const id = new mongoose.Types.ObjectId().toHexString();
 
