@@ -3,10 +3,10 @@ import "express-async-errors";
 import {json} from "body-parser";
 import cookieSession from "cookie-session";
 import {errorHandler, NotFoundError, currentUser} from "@tbarous/common";
-import {createTicketRouter} from "./routes/create";
-import {showTicketRouter} from "./routes/show";
-import {showTicketsRouter} from "./routes";
-import {updateTicketRouter} from "./routes/update";
+import {createOrderRouter} from "./routes/create";
+import {showOrderRouter} from "./routes/show";
+import {showOrdersRouter} from "./routes/index";
+import {deleteOrderRouter} from "./routes/delete";
 
 const app = express();
 
@@ -23,10 +23,10 @@ app.use(
 
 app.use(currentUser);
 
-app.use(createTicketRouter);
-app.use(showTicketsRouter);
-app.use(showTicketRouter);
-app.use(updateTicketRouter);
+app.use(createOrderRouter);
+app.use(showOrderRouter);
+app.use(showOrdersRouter);
+app.use(deleteOrderRouter);
 
 app.all("*", async (req: express.Request, res: express.Response) => {
     throw new NotFoundError();
