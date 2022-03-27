@@ -45,7 +45,6 @@ ticketSchema.statics.build = (attrs: TicketAttrs) => {
 
 ticketSchema.methods.isReserved = async function () {
     // "this" is the ticket document
-
     const existingOrder = await Order.findOne({
         ticket: this,
         status: {
@@ -56,6 +55,8 @@ ticketSchema.methods.isReserved = async function () {
             ]
         }
     });
+
+    return !!existingOrder;
 }
 
 const Ticket = mongoose.model<TicketDoc, TicketModel>("Ticket", ticketSchema);
