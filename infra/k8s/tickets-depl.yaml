@@ -16,6 +16,10 @@ spec:
         - name: tickets
           image: tbarous/tickets
           env:
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
             - name: NATS_CLUSTER_ID
               value: ticketing
             - name: NATS_URL
