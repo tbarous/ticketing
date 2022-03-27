@@ -50,5 +50,5 @@ it("acks the message", async () => {
 
     await listener.onMessage(data, msg);
 
-    expect(message.ack).toHaveBeenCalled();
+    expect(msg.ack).toHaveBeenCalled();
 })
