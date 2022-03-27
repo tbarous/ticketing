@@ -1,7 +1,6 @@
 import request from "supertest";
 import {app} from "../../app";
 import {getCookie} from "../../test/auth-helper";
-import {response} from "express";
 
 const createTicket = () => {
     const title = "Concert"
