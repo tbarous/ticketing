@@ -7,6 +7,8 @@ import {Order} from "../models/order";
 
 const router = express.Router();
 
+const EXPIRATION_WINDOW_SECONDS = 15 * 60;
+
 router.post(
     "/api/orders",
     requireAuth,
@@ -29,8 +31,6 @@ router.post(
         }
 
         // Make sure that this ticket is not already reserved
-        // Run query to look at all orders and find an order where the ticket we found
-        // and the order's status is not cancelled. If we find an order, the ticket is reserved
         const isReserved = await ticket.isReserved();
 
         if (isReserved) {
@@ -38,11 +38,22 @@ router.post(
         }
 
         // Calculate an expiration date for this order
+        const expiration = new Date();
+
+        expiration.setSeconds(expiration.getSeconds() + EXPIRATION_WINDOW_SECONDS);
 
         // Build the order and save it to the database
+        const order = Order.build({
+            ticket,
+            userId: req.currentUser!.id,
+            status: OrderStatus.Created,
+            expiresAt: expiration
+        });
+
+        await order.save();
 
         // Publish an event saying that an order was created
-
+        res.status(201).send(order);
     }
 );
 
