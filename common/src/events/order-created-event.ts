@@ -11,6 +11,7 @@ export interface OrderCreatedEvent {
         },
         userId: string,
         expiresAt: string
-        status: OrderStatus
+        status: OrderStatus,
+        version: number
     }
 }
