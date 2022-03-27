@@ -8,10 +8,12 @@ export class TicketCreatedListener extends Listener<TicketCreatedEvent> {
     subject: Subjects.TicketCreated = Subjects.TicketCreated;
 
     async onMessage(data: TicketCreatedEvent["data"], message: Message): Promise<void> {
-        const {title, price} = data;
+        const {id, title, price} = data;
 
         const ticket = Ticket.build({
-            title, price
+            id,
+            title,
+            price
         });
 
         await ticket.save();
