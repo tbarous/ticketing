@@ -19,13 +19,20 @@ interface OrderDoc extends mongoose.Document {
 }
 
 const orderSchema = new mongoose.Schema({
-    email: {
+    userId: {
         type: String,
         required: true
     },
-    password: {
+    status: {
         type: String,
         required: true
+    },
+    expiresAt: {
+        type: mongoose.Schema.Types.Date
+    },
+    ticket: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Ticket"
     }
 }, {
     toJSON: {
@@ -33,21 +40,10 @@ const orderSchema = new mongoose.Schema({
             ret.id = ret._id;
 
             delete ret._id;
-            delete ret.password;
             delete ret.__v;
         },
         versionKey: false
     }
-});
-
-orderSchema.pre("save", async function (done) {
-    if (this.isModified("password")) {
-        const hashed = await Password.toHash(this.get("password"));
-
-        this.set("password", hashed);
-    }
-
-    done();
 });
 
 orderSchema.statics.build = (attrs: OrderAttrs) => {
