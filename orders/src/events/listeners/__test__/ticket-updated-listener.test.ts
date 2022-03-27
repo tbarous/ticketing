@@ -46,5 +46,9 @@ it("finds, updates and saves a ticket", async () => {
 });
 
 it("acks the message", async () => {
-    
+    const {listener, data, msg} = await setup();
+
+    await listener.onMessage(data, msg);
+
+    expect(message.ack).toHaveBeenCalled();
 })
