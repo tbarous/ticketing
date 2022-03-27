@@ -1,5 +1,5 @@
 import express, {Request, Response} from "express";
-import {NotFoundError, requireAuth} from "@tbarous/common";
+import {NotAuthorizedError, NotFoundError, requireAuth} from "@tbarous/common";
 import {Order} from "../models/order";
 
 const router = express.Router();
@@ -12,6 +12,10 @@ router.get(
 
         if (!order) {
             throw new NotFoundError();
+        }
+
+        if (order.userId !== req.currentUser!.id) {
+            throw new NotAuthorizedError();
         }
 
         res.send(order);
