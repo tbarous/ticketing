@@ -59,7 +59,7 @@ it("Reserves a ticket", async () => {
         .expect(201);
 });
 
-it.todo("Emits a created event", async () => {
+it("Emits a created event", async () => {
     const ticket = Ticket.build({
         title: "Concert",
         price: 20
@@ -70,10 +70,8 @@ it.todo("Emits a created event", async () => {
     request(app)
         .post("/api/orders")
         .set("Cookie", getCookie())
-        .send({
-            ticketId: ticket.id
-        })
+        .send({ticketId: ticket.id})
         .expect(201);
 
-    expect(natsWrapper.client.publish()).toHaveBeenCalled();
+    expect(natsWrapper.client.publish).toHaveBeenCalled();
 })
