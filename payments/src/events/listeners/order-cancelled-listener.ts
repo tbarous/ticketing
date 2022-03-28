@@ -5,13 +5,13 @@ import {Order} from "../../models/order";
 
 export class OrderCancelledListener extends Listener<OrderCancelledEvent> {
     async onMessage(data: OrderCancelledEvent["data"], message: Message) {
-        const order = Order.findOne({
+        const order = await Order.findOne({
             _id: data.id,
             version: data.version - 1
         })
 
         if (!order) {
-            throw new Error("Order not found")
+            throw new Error("Order not found");
         }
 
         order.set({status: OrderStatus.Cancelled});
