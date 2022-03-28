@@ -40,8 +40,8 @@ router.post(
         if (order.status === OrderStatus.Cancelled) {
             throw new BadRequestError("Order is cancelled, cannot pay");
         }
-        
 
+        res.send({success: true});
     }
 )
 
