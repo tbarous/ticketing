@@ -15,7 +15,7 @@
     ]
   },
   "dependencies": {
-    "@tbarous/common": "^1.0.19",
+    "@tbarous/common": "^1.0.20",
     "bull": "^4.8.1",
     "node-nats-streaming": "^0.3.2"
   },
