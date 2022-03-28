@@ -5,6 +5,8 @@ import mongoose from "mongoose";
 import {Order} from "../../models/order";
 import {OrderStatus} from "@tbarous/common";
 
+jest.mock("./../../stripe");
+
 it("returns 404 on non existing order", async () => {
     await request(app)
         .post("/api/payments")
