@@ -12,7 +12,7 @@ interface PaymentModel extends mongoose.Model<PaymentDoc> {
 
 interface PaymentDoc extends mongoose.Document {
     orderId: string,
-    stripedId: string,
+    stripeId: string,
     version: number
 }
 
@@ -21,7 +21,7 @@ const paymentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    stripedId: {
+    stripeId: {
         type: String,
         required: true
     }

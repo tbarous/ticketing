@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import {Order} from "../../models/order";
 import {OrderStatus} from "@tbarous/common";
 import {stripe} from "../../stripe";
+import {Payment} from "../../models/payment";
 
 jest.mock("./../../stripe");
 
@@ -63,7 +64,7 @@ it("returns 400 on cancelled order", async () => {
         .expect(400);
 });
 
-it("returns 204 with valid inputs", async () => {
+it("returns 201 with valid inputs", async () => {
     const userId = new mongoose.Types.ObjectId().toHexString();
 
     const order = Order.build({
@@ -90,4 +91,8 @@ it("returns 204 with valid inputs", async () => {
     expect(chargeOptions.source).toEqual("tok_visa");
     expect(chargeOptions.amount).toEqual(20 * 100);
     expect(chargeOptions.currency).toEqual("usd");
+
+    const payment = await Payment.findOne({
+        orderId,
+    })
 });
