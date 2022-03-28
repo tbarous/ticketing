@@ -10,10 +10,12 @@ export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
         console.log(delay)
 
         await expirationQueue.add({
-            orderId: data.id
-        }, {
-            delay
-        });
+                orderId: data.id
+            },
+            {
+                delay
+            }
+        );
 
         message.ack();
     }
